@@ -24,7 +24,6 @@ export class UserEntity {
   }
 
   public decrementBalance(value: number) {
-    console.log(value, this.balance);
     if (value > this.balance) throw new Error("Valor maior que o saldo atual!");
     this.balance = this.balance - value;
   }
