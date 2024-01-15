@@ -7,7 +7,9 @@ export default {
    collectCoverageFrom: [
      './src/**/*.ts',
      '!./src/main/**',
-     '!./src/@*/**'
+     '!./src/@*/**',
+     '!./src/**/*.interface.ts',
+     '!./src/**/*.type.ts'
    ],
    coverageDirectory: "coverage",
    coveragePathIgnorePatterns: [

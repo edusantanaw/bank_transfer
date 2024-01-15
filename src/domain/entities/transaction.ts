@@ -1,13 +1,5 @@
 import { randomUUID } from "node:crypto";
 
-type ITransaction = {
-  id: string;
-  from: string;
-  to: string;
-  value: number;
-  date: Date;
-};
-
 interface IDataTransaction {
   id?: string;
   from: string;
