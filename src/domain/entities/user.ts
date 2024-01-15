@@ -20,7 +20,7 @@ export class UserEntity {
     this.password = data.password;
     this.cpfCnpj = data.cpfCnpj;
     this.isShopkeeper = data.isShopkeeper;
-    this.balance = data.balance
+    this.balance = data.balance;
   }
 
   public decrementBalance(value: number) {
@@ -34,6 +34,10 @@ export class UserEntity {
 
   set setPassword(pass: string) {
     this.password = pass;
+  }
+
+  get getPassword() {
+    return this.password;
   }
 
   get getUser(): IUser {

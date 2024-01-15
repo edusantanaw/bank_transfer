@@ -9,6 +9,7 @@ export default {
      '!./src/main/**',
      '!./src/@*/**',
      '!./src/**/*.interface.ts',
+     '!./src/.*/*.interface.ts',
      '!./src/**/*.type.ts'
    ],
    coverageDirectory: "coverage",
