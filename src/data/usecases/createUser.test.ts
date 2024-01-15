@@ -2,9 +2,20 @@ import { EncrypterMock } from "../../test/mocks/helpers/ecrypter";
 import { UserRepository } from "../../test/mocks/repository/user.repository";
 import { CreateUserUsecase } from "./createUser";
 
+function makeSut() {
+  const userRepository = new UserRepository();
+  const encrypter = new EncrypterMock("hash");
+  const createUserUsecase = new CreateUserUsecase(userRepository, encrypter);
+  return {
+    createUserUsecase,
+    encrypter,
+    userRepository,
+  };
+}
+
 describe("CreateUserUsecase", () => {
   test("Should throw if cpf already in use by outher user", async () => {
-    const userRepository = new UserRepository();
+    const { createUserUsecase, userRepository } = makeSut();
     userRepository.items = [
       {
         name: "Eduardo Santana",
@@ -16,8 +27,6 @@ describe("CreateUserUsecase", () => {
         id: "1",
       },
     ];
-    const encrypter = new EncrypterMock("hash");
-    const createUserUsecase = new CreateUserUsecase(userRepository, encrypter);
     const response = createUserUsecase.execute({
       name: "Eduardo Santana",
       cpfCnpj: "52800012870",
@@ -30,9 +39,7 @@ describe("CreateUserUsecase", () => {
   });
 
   test("Should throw if email already in use by outher user", async () => {
-    const userRepository = new UserRepository();
-    const encrypter = new EncrypterMock("hash");
-    const createUserUsecase = new CreateUserUsecase(userRepository, encrypter);
+    const { createUserUsecase, userRepository } = makeSut();
     userRepository.items = [
       {
         name: "Eduardo Santana",
@@ -56,9 +63,7 @@ describe("CreateUserUsecase", () => {
   });
 
   test("Should call userRepository methods with correct values", async () => {
-    const userRepository = new UserRepository();
-    const encrypter = new EncrypterMock("hash");
-    const createUserUsecase = new CreateUserUsecase(userRepository, encrypter);
+    const { createUserUsecase, userRepository } = makeSut();
     await createUserUsecase.execute({
       name: "Eduardo Santana",
       cpfCnpj: "528000122870",
@@ -72,9 +77,7 @@ describe("CreateUserUsecase", () => {
   });
 
   test("Should call encrypter method with correct value", async () => {
-    const userRepository = new UserRepository();
-    const encrypter = new EncrypterMock("hash");
-    const createUserUsecase = new CreateUserUsecase(userRepository, encrypter);
+    const { createUserUsecase, encrypter } = makeSut();
     await createUserUsecase.execute({
       name: "Eduardo Santana",
       cpfCnpj: "528000122870",
@@ -87,9 +90,7 @@ describe("CreateUserUsecase", () => {
   });
 
   test("Should replace user password with encrypter return", async () => {
-    const userRepository = new UserRepository();
-    const encrypter = new EncrypterMock("hash");
-    const createUserUsecase = new CreateUserUsecase(userRepository, encrypter);
+    const { createUserUsecase, userRepository } = makeSut();
     await createUserUsecase.execute({
       name: "Eduardo Santana",
       cpfCnpj: "528000122870",
@@ -102,9 +103,7 @@ describe("CreateUserUsecase", () => {
   });
 
   test("Should call userRepository.create with user payload", async () => {
-    const userRepository = new UserRepository();
-    const encrypter = new EncrypterMock("hash");
-    const createUserUsecase = new CreateUserUsecase(userRepository, encrypter);
+    const { createUserUsecase, userRepository } = makeSut();
     const data: IUser = {
       name: "Eduardo Santana",
       cpfCnpj: "528000122870",
@@ -119,9 +118,7 @@ describe("CreateUserUsecase", () => {
   });
 
   test("Should return an new user without password in the payload", async () => {
-    const userRepository = new UserRepository();
-    const encrypter = new EncrypterMock("hash");
-    const createUserUsecase = new CreateUserUsecase(userRepository, encrypter);
+    const { createUserUsecase } = makeSut();
     const data: IUser = {
       name: "Eduardo Santana",
       cpfCnpj: "528000122870",
