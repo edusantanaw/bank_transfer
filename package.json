@@ -1,5 +1,5 @@
 {
-  "name": "pic_pay",
+  "name": "bank_transfer",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
