@@ -8,9 +8,7 @@ describe("transaction", () => {
       value: 2000,
     }).getTransaction;
     expect(transaction.id).not.toBe(null);
-    expect(transaction.id).not.toBe(undefined);
     expect(transaction.date).not.toBe(undefined);
-    expect(transaction.date).not.toBe(null);
   });
 
   test("Should craete an random id or date if respectives are not provided", () => {
@@ -20,8 +18,6 @@ describe("transaction", () => {
       value: 2000,
     }).getTransaction;
     expect(transaction.id).not.toBe(null);
-    expect(transaction.id).not.toBe(undefined);
-    expect(transaction.date).not.toBe(undefined);
     expect(transaction.date).not.toBe(null);
   });
 

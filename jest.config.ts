@@ -10,7 +10,8 @@ export default {
      '!./src/@*/**',
      '!./src/**/*.interface.ts',
      '!./src/.*/*.interface.ts',
-     '!./src/**/*.type.ts'
+     '!./src/**/*.type.ts',
+     '!./src/**/*.repository.ts'
    ],
    coverageDirectory: "coverage",
    coveragePathIgnorePatterns: [

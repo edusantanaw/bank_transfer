@@ -1,6 +1,6 @@
 import { UserEntity } from "../../domain/entities/user";
 import { ICreateUsecase } from "../../domain/usecases/create.interface";
-import { IEncrypter } from "../interfaces/helpers/encrypter.inteface";
+import { IEncrypter } from "../interfaces/helpers/encrypter.interface";
 import { ICreateUserRepository } from "../interfaces/repository/createUser.interface";
 
 interface ICreateUserData extends Omit<IUser, "id"> {

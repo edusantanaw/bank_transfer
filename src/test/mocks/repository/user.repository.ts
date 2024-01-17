@@ -14,4 +14,10 @@ export class UserRepository extends CrudRepositoryMock<IUser> {
     const item = this.items.find((c) => c.cpfCnpj === cpfCnpj);
     return item;
   }
+
+  async loadById(id: string) {
+    const item = this.items.filter((i) => i.id === id)[0];
+    if (item) return item;
+    return null;
+  }
 }

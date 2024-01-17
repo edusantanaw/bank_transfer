@@ -1,16 +1,16 @@
 export class CrudRepositoryMock<T> {
   items: T[] = [];
-  createInput: T | null = null;
-  updateInput: T | null = null;
+  createInput: T[] = [];
+  updateInput: T[] = [];
   deleteInput: string | null = null;
   async create(data: T) {
-    this.createInput = data;
+    this.createInput.push(data);
     this.items.push(data);
     return data
   }
 
   async update(data: T) {
-    this.items.push(data);
+    this.updateInput.push(data);
     return data;
   }
 

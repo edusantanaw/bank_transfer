@@ -99,7 +99,7 @@ describe("CreateUserUsecase", () => {
       password: "edu",
       balance: 1,
     });
-    expect(userRepository.createInput?.password).toBe("hash");
+    expect(userRepository.createInput[0].password).toBe("hash");
   });
 
   test("Should call userRepository.create with user payload", async () => {
@@ -114,7 +114,7 @@ describe("CreateUserUsecase", () => {
       id: "1",
     };
     await createUserUsecase.execute(data);
-    expect(userRepository.createInput).toEqual({ ...data, password: "hash" });
+    expect(userRepository.createInput[0]).toEqual({ ...data, password: "hash" });
   });
 
   test("Should return an new user without password in the payload", async () => {
