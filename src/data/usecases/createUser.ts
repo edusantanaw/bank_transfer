@@ -1,5 +1,6 @@
 import { UserEntity } from "../../domain/entities/user";
 import { ICreateUsecase } from "../../domain/usecases/create.interface";
+import { AlreadyExistsError } from "../../helpers/errors/AlreadyExists.errors";
 import { IEncrypter } from "../interfaces/helpers/encrypter.interface";
 import { ICreateUserRepository } from "../interfaces/repository/createUser.interface";
 
@@ -22,8 +23,8 @@ export class CreateUserUsecase
       this.userRepository.loadByCpfCnpj(data.cpfCnpj),
       this.userRepository.loadByEmail(data.email),
     ]);
-    if (userByCpfCnpj) throw new Error("Cpf já está sendo usado!");
-    if (userByEmail) throw new Error("Email já está sendo usado!");
+    if (userByCpfCnpj) throw new AlreadyExistsError("Cpf já está sendo usado!");
+    if (userByEmail) throw new AlreadyExistsError("Email já está sendo usado!");
     const user = new UserEntity(data);
     const hashedPassword = await this.encrypter.generatehash(user.getPassword);
     user.setPassword = hashedPassword;

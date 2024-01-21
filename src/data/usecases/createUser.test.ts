@@ -1,3 +1,4 @@
+import { AlreadyExistsError } from "../../helpers/errors/AlreadyExists.errors";
 import { EncrypterMock } from "../../test/mocks/helpers/ecrypter";
 import { UserRepository } from "../../test/mocks/repository/user.repository";
 import { CreateUserUsecase } from "./createUser";
@@ -19,7 +20,7 @@ describe("CreateUserUsecase", () => {
     userRepository.items = [
       {
         name: "Eduardo Santana",
-        cpfCnpj: "52800012870",
+        cpfCnpj: "123123123123",
         email: "eduardo@mail.com",
         isShopkeeper: false,
         password: "edu",
@@ -29,13 +30,13 @@ describe("CreateUserUsecase", () => {
     ];
     const response = createUserUsecase.execute({
       name: "Eduardo Santana",
-      cpfCnpj: "52800012870",
+      cpfCnpj: "123123123123",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
       balance: 1,
     });
-    expect(response).rejects.toThrow(new Error("Cpf já está sendo usado!"));
+    expect(response).rejects.toThrow(new AlreadyExistsError("Cpf já está sendo usado!"));
   });
 
   test("Should throw if email already in use by outher user", async () => {
@@ -43,7 +44,7 @@ describe("CreateUserUsecase", () => {
     userRepository.items = [
       {
         name: "Eduardo Santana",
-        cpfCnpj: "52800012870",
+        cpfCnpj: "123123123123",
         email: "eduardo@mail.com",
         isShopkeeper: false,
         password: "edu",
@@ -53,34 +54,34 @@ describe("CreateUserUsecase", () => {
     ];
     const response = createUserUsecase.execute({
       name: "Eduardo Santana",
-      cpfCnpj: "528000122870",
+      cpfCnpj: "1231231321323123",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
       balance: 1,
     });
-    expect(response).rejects.toThrow(new Error("Email já está sendo usado!"));
+    expect(response).rejects.toThrow(new AlreadyExistsError("Email já está sendo usado!"));
   });
 
   test("Should call userRepository methods with correct values", async () => {
     const { createUserUsecase, userRepository } = makeSut();
     await createUserUsecase.execute({
       name: "Eduardo Santana",
-      cpfCnpj: "528000122870",
+      cpfCnpj: "123123123123432423",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
       balance: 1,
     });
     expect(userRepository.loadByEmailInput).toBe("eduardo@mail.com");
-    expect(userRepository.loadByCpfCnpjInput).toBe("528000122870");
+    expect(userRepository.loadByCpfCnpjInput).toBe("123123123123432423");
   });
 
   test("Should call encrypter method with correct value", async () => {
     const { createUserUsecase, encrypter } = makeSut();
     await createUserUsecase.execute({
       name: "Eduardo Santana",
-      cpfCnpj: "528000122870",
+      cpfCnpj: "123123123123432423",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
@@ -93,7 +94,7 @@ describe("CreateUserUsecase", () => {
     const { createUserUsecase, userRepository } = makeSut();
     await createUserUsecase.execute({
       name: "Eduardo Santana",
-      cpfCnpj: "528000122870",
+      cpfCnpj: "1231231231233214",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
@@ -106,7 +107,7 @@ describe("CreateUserUsecase", () => {
     const { createUserUsecase, userRepository } = makeSut();
     const data: IUser = {
       name: "Eduardo Santana",
-      cpfCnpj: "528000122870",
+      cpfCnpj: "1231231231234332",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
@@ -121,7 +122,7 @@ describe("CreateUserUsecase", () => {
     const { createUserUsecase } = makeSut();
     const data: IUser = {
       name: "Eduardo Santana",
-      cpfCnpj: "528000122870",
+      cpfCnpj: "52800431230122870",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",

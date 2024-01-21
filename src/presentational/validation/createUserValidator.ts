@@ -1,4 +1,4 @@
-import { SchemaValidator } from "./SchemaValidator";
+import { SchemaValidator } from "./schemaValidator";
 
 type data = Omit<IUser, "id">;
 

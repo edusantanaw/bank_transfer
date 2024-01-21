@@ -1,12 +1,11 @@
 import { Transaction } from "../../domain/entities/transaction";
 import { UserEntity } from "../../domain/entities/user";
-import { ITransfeData, ITransferenceUsecase } from "../../domain/usecases/transference.interface";
+import {
+  ITransfeData,
+  ITransferenceUsecase,
+} from "../../domain/usecases/transference.interface";
 import { ICreateRepository } from "../interfaces/repository/create.interface";
-
-interface IUpdateRepository<T> {
-  loadById: (id: string) => Promise<IUser | null | undefined>;
-  update: (data: IUser) => Promise<IUser>;
-}
+import { IUpdateRepository } from "../interfaces/repository/update.interface";
 
 export class TransferenceUsecase implements ITransferenceUsecase {
   constructor(

@@ -4,7 +4,7 @@ describe("user entity", () => {
   test("Should gererate an random uuid id if id is not provided", () => {
     const user = new UserEntity({
       name: "Eduardo Santana",
-      cpfCnpj: "52800012870",
+      cpfCnpj: "123123123123",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
@@ -16,7 +16,7 @@ describe("user entity", () => {
   test("Should use provided id if one is not provided", () => {
     const user = new UserEntity({
       name: "Eduardo Santana",
-      cpfCnpj: "52800012870",
+      cpfCnpj: "123123123123",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
@@ -29,7 +29,7 @@ describe("user entity", () => {
   test("Should change the user password if setPassword method is called", () => {
     const user = new UserEntity({
       name: "Eduardo Santana",
-      cpfCnpj: "52800012870",
+      cpfCnpj: "123123123123",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
@@ -45,7 +45,7 @@ describe("user entity", () => {
   test("Should throw if value is greater than current balance", () => {
     const user = new UserEntity({
       name: "Eduardo Santana",
-      cpfCnpj: "52800012870",
+      cpfCnpj: "123123123123",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
@@ -60,7 +60,7 @@ describe("user entity", () => {
   test("Should decrement if value is lower or equals current balance", () => {
     const user = new UserEntity({
       name: "Eduardo Santana",
-      cpfCnpj: "52800012870",
+      cpfCnpj: "123123123123",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
@@ -74,7 +74,7 @@ describe("user entity", () => {
   test("Should increment current balance if icrementBalance are called!", () => {
     const user = new UserEntity({
       name: "Eduardo Santana",
-      cpfCnpj: "52800012870",
+      cpfCnpj: "123123123123",
       email: "eduardo@mail.com",
       isShopkeeper: false,
       password: "edu",
