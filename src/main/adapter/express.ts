@@ -10,6 +10,7 @@ export default <T>(controller: IController<T>) => {
       });
       return res.status(Number(response.statusCode)).json(response.body);
     } catch (error) {
+        console.log(error);
       return res.status(500).send("Internal Server Error!");
     }
   };

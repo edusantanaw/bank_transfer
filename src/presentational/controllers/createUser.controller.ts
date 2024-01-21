@@ -18,6 +18,7 @@ export class CreateUserController implements IController<Omit<IUser, "id">> {
       const createdUser = await this.createUserUsecase.execute(data);
       return Created(createdUser);
     } catch (error) {
+        console.log(error);
       if (error instanceof AlreadyExistsError) {
         return BadRequest(error.message);
       }

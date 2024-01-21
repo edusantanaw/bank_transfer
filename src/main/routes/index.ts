@@ -4,6 +4,6 @@ import { createUserControllerFactory } from "../factory/controllers/createUser";
 
 export default (app: Express) => {
   const router = Router();
-  router.post("/api", expressAdapter(createUserControllerFactory()));
+  router.post("/api/user", expressAdapter(createUserControllerFactory()));
   app.use(router);
 };
