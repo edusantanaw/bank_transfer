@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transferences-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transferences
+  template:
+    metadata:
+      labels:
+        app: transferences
+    spec:
+      containers:
+        - name: transferences
+          image: edusantanaw/bank_transferences:latest
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: transferences-port
+spec:
+  type: NodePort
+  ports:
+    - name: transferences-port
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
+  selector:
+    app: transferences

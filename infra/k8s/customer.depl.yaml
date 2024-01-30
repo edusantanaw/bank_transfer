@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: customers-depl
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: customers
+  template: 
+    metadata: 
+      labels:
+        app: customers
+    spec: 
+      containers:
+        - name: customers
+          image: edusantanaw/bank_customers:latest
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: customers-port
+spec:
+  type: NodePort
+  ports:
+    - name: customers-port
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: customers   
