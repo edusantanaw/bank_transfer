@@ -1,11 +1,10 @@
-import { CrudRepositoryMock } from "../../test/mocks/repository/crud.repository";
-import { UserRepository } from "../../test/mocks/repository/user.repository";
+import { CrudRepositoryMock } from "../../../test/mocks/repository/repository";
 import { TransferenceUsecase } from "./transference";
 
 describe("TransferenceUsecase", () => {
   test("Should thorw an error if userFrom or userTo not exists", async () => {
-    const repository = new UserRepository();
-    const transactionRepository = new CrudRepositoryMock<ITransaction>();
+    const repository = new CrudRepositoryMock<ICustomer>();
+    const transactionRepository = new CrudRepositoryMock<ITransference>();
     const transferenceUsecase = new TransferenceUsecase(
       repository,
       transactionRepository
@@ -21,7 +20,7 @@ describe("TransferenceUsecase", () => {
     repository.items = [
       {
         id: "1",
-      } as IUser,
+      } as ICustomer,
     ];
     const transferenceUsecase2 = new TransferenceUsecase(
       repository,
@@ -38,8 +37,8 @@ describe("TransferenceUsecase", () => {
   });
 
   test("Should throw if user from has less money than currentTransference", async () => {
-    const repository = new UserRepository();
-    const transactionRepository = new CrudRepositoryMock<ITransaction>();
+    const repository = new CrudRepositoryMock<ICustomer>();
+    const transactionRepository = new CrudRepositoryMock<ITransference>();
     const transferenceUsecase = new TransferenceUsecase(
       repository,
       transactionRepository
@@ -48,11 +47,11 @@ describe("TransferenceUsecase", () => {
       {
         id: "1",
         balance: 50,
-      } as IUser,
+      } as ICustomer,
       {
         id: "2",
         balance: 50,
-      } as IUser,
+      } as ICustomer,
     ];
     const response = transferenceUsecase.execute({
       userFrom: "1",
@@ -65,8 +64,8 @@ describe("TransferenceUsecase", () => {
   });
 
   test("Should throw if user from and user to are the same", async () => {
-    const repository = new UserRepository();
-    const transactionRepository = new CrudRepositoryMock<ITransaction>();
+    const repository = new CrudRepositoryMock<ICustomer>();
+    const transactionRepository = new CrudRepositoryMock<ITransference>();
     const transferenceUsecase = new TransferenceUsecase(
       repository,
       transactionRepository
@@ -75,7 +74,7 @@ describe("TransferenceUsecase", () => {
       {
         id: "1",
         balance: 50,
-      } as IUser,
+      } as ICustomer,
     ];
     const response = transferenceUsecase.execute({
       userFrom: "1",
@@ -88,8 +87,8 @@ describe("TransferenceUsecase", () => {
   });
 
   test("Should throw if value are less or equals zero", async () => {
-    const repository = new UserRepository();
-    const transactionRepository = new CrudRepositoryMock<ITransaction>();
+    const repository = new CrudRepositoryMock<ICustomer>();
+    const transactionRepository = new CrudRepositoryMock<ITransference>();
     const transferenceUsecase = new TransferenceUsecase(
       repository,
       transactionRepository
@@ -98,11 +97,11 @@ describe("TransferenceUsecase", () => {
       {
         id: "1",
         balance: 50,
-      } as IUser,
+      } as ICustomer,
       {
         id: "2",
         balance: 50,
-      } as IUser,
+      } as ICustomer,
     ];
     const response = transferenceUsecase.execute({
       userFrom: "1",
@@ -115,8 +114,8 @@ describe("TransferenceUsecase", () => {
   });
 
   test("Should decrement value to userFrom balance and increment to userTo balance", async () => {
-    const repository = new UserRepository();
-    const transactionRepository = new CrudRepositoryMock<ITransaction>();
+    const repository = new CrudRepositoryMock<ICustomer>();
+    const transactionRepository = new CrudRepositoryMock<ITransference>();
     const transferenceUsecase = new TransferenceUsecase(
       repository,
       transactionRepository
@@ -125,11 +124,11 @@ describe("TransferenceUsecase", () => {
       {
         id: "1",
         balance: 50,
-      } as IUser,
+      } as ICustomer,
       {
         id: "2",
         balance: 50,
-      } as IUser,
+      } as ICustomer,
     ];
     const inputValues = {
       userFrom: "1",

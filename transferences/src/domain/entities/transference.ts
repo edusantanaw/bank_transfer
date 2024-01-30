@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 
-interface IDataTransaction {
+interface IDataTransference {
   id?: string;
   from: string;
   to: string;
@@ -8,14 +8,14 @@ interface IDataTransaction {
   date?: Date;
 }
 
-export class Transaction {
+export class Transference {
   private id: string;
   private from: string;
   private to: string;
   private value: number;
   private date: Date;
 
-  constructor(data: IDataTransaction) {
+  constructor(data: IDataTransference) {
     this.id = data.id ?? randomUUID();
     this.from = data.from;
     this.to = data.to;
@@ -27,7 +27,7 @@ export class Transaction {
     this.date = data.date ?? new Date();
   }
 
-  get getTransaction(): ITransaction {
+  get getTransference(): ITransference {
     return {
       id: this.id,
       date: this.date,
