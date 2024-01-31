@@ -12,7 +12,7 @@ jobs:
         with: 
           node-version: 18
 
-      - name: Move to transferences service 
-        run: cd transferences
+     - name: Change directory and run a command
+       working-directory: path/to/your/directory
       - run: npm i
       - run: npm run test
