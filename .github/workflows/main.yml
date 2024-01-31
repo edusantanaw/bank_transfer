@@ -13,6 +13,9 @@ jobs:
           node-version: 18
 
       - name: Change directory and run a command
-        working-directory: path/to/your/directory
-      - run: npm i
-      - run: npm run test
+        working-directory: ./customers
+        run: npm i
+
+      - name: Run customers tests
+        working-directory: ./customers
+        run: npm run test
