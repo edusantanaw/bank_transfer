@@ -1,4 +1,4 @@
-import { AlreadyExistsError } from "../../../helpers/errors/AlreadyExists.errors";
+import { AlreadyExistsError } from "../../../src/helpers/errors/AlreadyExists.errors";
 
 export class UsecaseMock<In, Out> {
   serverError: boolean = false;

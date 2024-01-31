@@ -1,4 +1,4 @@
-import { IEncrypter } from "../../../data/interfaces/helpers/encrypter.interface";
+import { IEncrypter } from "../../../src/data/interfaces/helpers/encrypter.interface";
 
 export class EncrypterMock implements IEncrypter {
   generatehashInput: null | string = null;

@@ -1,7 +1,7 @@
+import { EncrypterMock } from "../../../test/mocks/helpers/ecrypter";
+import { UserRepository } from "../../../test/mocks/repository/user.repository";
 import { IUser } from "../../@types/user";
 import { AlreadyExistsError } from "../../helpers/errors/AlreadyExists.errors";
-import { EncrypterMock } from "../../test/mocks/helpers/ecrypter";
-import { UserRepository } from "../../test/mocks/repository/user.repository";
 import { CreateUserUsecase } from "./createUser";
 
 function makeSut() {
