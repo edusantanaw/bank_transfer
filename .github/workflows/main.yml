@@ -1,0 +1,12 @@
+name: CI
+
+on:
+  push:
+    branches: [customers]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: just a test
+        run: ls
