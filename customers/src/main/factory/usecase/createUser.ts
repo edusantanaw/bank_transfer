@@ -1,7 +1,8 @@
+import { EncrypterMock } from "../../../../test/mocks/helpers/ecrypter";
 import { CreateUserUsecase } from "../../../data/usecases/createUser";
-import { EncrypterMock } from "../../../test/mocks/helpers/ecrypter";
-import { UserRepository } from "../../../test/mocks/repository/user.repository";
+import { Encrypter } from "../../../helpers/encrypter/encrypter";
+import { UserRepository } from "../../../infra/repositories/user.repository";
 
 export function createUserUsecaseFactory() {
-  return new CreateUserUsecase(new UserRepository(), new EncrypterMock("hash"));
+  return new CreateUserUsecase(new UserRepository(), new Encrypter());
 }

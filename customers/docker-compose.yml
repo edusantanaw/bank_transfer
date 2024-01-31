@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: bank
+      POSTGRES_USER: edusantanaw
+      POSTGRES_PASSWORD: edusantanaw123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  backend:
+    build: ./
+    ports: 
+      - 8080:8080
+    environment:
+      PGHOST: postgres
+      PGDATABASE: bank
+      PGUSER: myuser
+      PGPASSWORD: edusantanaw123
+      PGPORT: 5432
+      PORT: 8080
+    depends_on:
+      - postgres
+    command: npm start
+
+volumes:
+  postgres-data:

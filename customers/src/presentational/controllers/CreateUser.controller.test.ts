@@ -1,6 +1,6 @@
+import { IUserSchemaValidator } from "../../../test/mocks/helpers/schemaValidator";
+import { UsecaseMock } from "../../../test/mocks/usecase/genericUsecase";
 import { IUser } from "../../@types/user";
-import { IUserSchemaValidator } from "../../test/mocks/helpers/schemaValidator";
-import { UsecaseMock } from "../../test/mocks/usecase/genericUsecase";
 import { CreateUserController } from "./createUser.controller";
 
 describe("CreateUserController", () => {

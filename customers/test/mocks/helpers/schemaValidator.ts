@@ -1,5 +1,5 @@
-import { IUser } from "../../../@types/user";
-import { SchemaValidator } from "../../../presentational/validation/schemaValidator";
+import { IUser } from "../../../src/@types/user";
+import { SchemaValidator } from "../../../src/presentational/validation/schemaValidator";
 
 export class IUserSchemaValidator implements SchemaValidator<Omit<IUser, "id">> {
   errors: string[] = [];
