@@ -1,3 +1,4 @@
+import { IUser } from "../../@types/user";
 import { AlreadyExistsError } from "../../helpers/errors/AlreadyExists.errors";
 import { EncrypterMock } from "../../test/mocks/helpers/ecrypter";
 import { UserRepository } from "../../test/mocks/repository/user.repository";
@@ -36,7 +37,9 @@ describe("CreateUserUsecase", () => {
       password: "edu",
       balance: 1,
     });
-    expect(response).rejects.toThrow(new AlreadyExistsError("Cpf já está sendo usado!"));
+    expect(response).rejects.toThrow(
+      new AlreadyExistsError("Cpf já está sendo usado!")
+    );
   });
 
   test("Should throw if email already in use by outher user", async () => {
@@ -60,7 +63,9 @@ describe("CreateUserUsecase", () => {
       password: "edu",
       balance: 1,
     });
-    expect(response).rejects.toThrow(new AlreadyExistsError("Email já está sendo usado!"));
+    expect(response).rejects.toThrow(
+      new AlreadyExistsError("Email já está sendo usado!")
+    );
   });
 
   test("Should call userRepository methods with correct values", async () => {
@@ -115,7 +120,10 @@ describe("CreateUserUsecase", () => {
       id: "1",
     };
     await createUserUsecase.execute(data);
-    expect(userRepository.createInput[0]).toEqual({ ...data, password: "hash" });
+    expect(userRepository.createInput[0]).toEqual({
+      ...data,
+      password: "hash",
+    });
   });
 
   test("Should return an new user without password in the payload", async () => {

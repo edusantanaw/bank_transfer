@@ -8,5 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: just a test
-        run: ls
+      - uses: actions/setup-node@v2
+        with: 
+          node-version: 18
+
+      - name: Change directory and run a command
+        working-directory: ./customers
+        run: npm i
+
+      - name: Run customers tests
+        working-directory: ./customers
+        run: npm run test

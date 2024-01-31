@@ -1,3 +1,4 @@
+import { IUser } from "../../../@types/user";
 import { SchemaValidator } from "../../../presentational/validation/schemaValidator";
 
 export class IUserSchemaValidator implements SchemaValidator<Omit<IUser, "id">> {
