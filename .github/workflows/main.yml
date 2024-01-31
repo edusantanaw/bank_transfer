@@ -8,5 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: just a test
-        run: ls
+      - uses: actions/setup-node@v2
+        with: '18.x'
+
+      - name: Move to transferences service 
+        run: cd transferences
+      - run: npm i
+      - run: npm run test
