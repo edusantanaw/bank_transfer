@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: ingress-srv
+spec:
+  ingressClassName: nginx  
+  rules:
+    - host: bankedu.com
+      http:
+        paths:
+          - path: /api/user
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: customers-port
+                port:
+                  number: 80
+          - path: "/api/transferences"
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: transferences-port
+                port:
+                  number: 4000
+                

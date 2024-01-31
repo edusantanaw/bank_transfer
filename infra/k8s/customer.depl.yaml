@@ -14,7 +14,7 @@ spec:
     spec: 
       containers:
         - name: customers
-          image: edusantanaw/bank_customers:latest
+          image: edusantanaw1/bank-customers
 
 ---
 
@@ -27,7 +27,7 @@ spec:
   ports:
     - name: customers-port
       protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
   selector:
     app: customers   

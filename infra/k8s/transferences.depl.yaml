@@ -14,10 +14,8 @@ spec:
     spec:
       containers:
         - name: transferences
-          image: edusantanaw/bank_transferences:latest
-
+          image: edusantanaw1/bank-transferences:latest
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
