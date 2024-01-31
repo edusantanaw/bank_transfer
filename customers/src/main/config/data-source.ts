@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { User } from "../../entity/User";
+import { User } from "../../infra/entity/User";
 import env from "./env";
 
 env();
@@ -24,3 +24,14 @@ export const Database = new DataSource({
   migrations: [],
   subscribers: [],
 });
+
+export function initDb() {
+  Database.initialize()
+    .then(() => {
+      console.log("Database connected!");
+    })
+    .catch((err) => {
+      console.log(err);
+      throw new Error("Database connection failed!");
+    });
+}

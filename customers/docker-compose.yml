@@ -14,14 +14,15 @@ services:
 
   backend:
     build: ./
-    ports: ["80:80"]
+    ports: 
+      - 8080:8080
     environment:
       PGHOST: postgres
       PGDATABASE: bank
       PGUSER: myuser
       PGPASSWORD: edusantanaw123
       PGPORT: 5432
-      PORT: 80
+      PORT: 8080
     depends_on:
       - postgres
     command: npm start
