@@ -1,17 +1,26 @@
-import "reflect-metadata"
-import { DataSource } from "typeorm"
-import { User } from "../../entity/User"
+import "reflect-metadata";
+import { DataSource } from "typeorm";
+import { User } from "../../entity/User";
+import env from "./env";
 
-export const AppDataSource = new DataSource({
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "test",
-    password: "test",
-    database: "test",
-    synchronize: true,
-    logging: false,
-    entities: [User],
-    migrations: [],
-    subscribers: [],
-})
+env();
+
+const PGHOST = process.env.PGHOST;
+const PGDATABASE = process.env.PGDATABASE;
+const PGUSER = process.env.PGUSER;
+const PGPASSWORD = process.env.PGPASSWORD;
+const PGPORT = process.env.PGPORT;
+
+export const Database = new DataSource({
+  type: "postgres",
+  host: PGHOST,
+  port: Number(PGPORT),
+  username: PGUSER,
+  password: PGPASSWORD,
+  database: PGDATABASE,
+  synchronize: true,
+  logging: false,
+  entities: [User],
+  migrations: [],
+  subscribers: [],
+});
