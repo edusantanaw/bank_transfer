@@ -1,3 +1,4 @@
+import { IUser } from "../../../@types/user";
 import { CrudRepositoryMock } from "./crud.repository";
 
 export class UserRepository extends CrudRepositoryMock<IUser> {

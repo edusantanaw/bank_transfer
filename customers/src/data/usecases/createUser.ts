@@ -1,3 +1,4 @@
+import { IUser } from "../../@types/user";
 import { UserEntity } from "../../domain/entities/user";
 import { ICreateUsecase } from "../../domain/usecases/create.interface";
 import { AlreadyExistsError } from "../../helpers/errors/AlreadyExists.errors";
