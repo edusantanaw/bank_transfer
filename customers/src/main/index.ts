@@ -3,8 +3,10 @@ import * as dotenv from "dotenv";
 import express from "express";
 import "reflect-metadata";
 import { initDb } from "./config/data-source";
+import "./config/kafka";
 
 dotenv.config();
+
 const PORT = process.env.PORT;
 
 const app = express();

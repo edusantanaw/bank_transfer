@@ -1,4 +1,3 @@
-import { EncrypterMock } from "../../../../test/mocks/helpers/ecrypter";
 import { CreateUserUsecase } from "../../../data/usecases/createUser";
 import { Encrypter } from "../../../helpers/encrypter/encrypter";
 import { UserRepository } from "../../../infra/repositories/user.repository";

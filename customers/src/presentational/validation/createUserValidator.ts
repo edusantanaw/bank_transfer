@@ -1,3 +1,4 @@
+import { IUser } from "../../@types/user";
 import { SchemaValidator } from "./schemaValidator";
 
 type data = Omit<IUser, "id">;
